@@ -1,12 +1,12 @@
 # LaTeX Template for Review Responses
 
-[![Overleaf Template](https://img.shields.io/static/v1?label=Overleaf&logo=overleaf&message=Template&color=47A141)](https://www.overleaf.com/latex/templates/review-response-template/tmbvmjstxwrd)
+Forked from [https://github.com/klb2/review-response-template]((https://github.com/klb2/review-response-template))
 
 This repository provides a simple LaTeX template for writing responses to
 reviewers, which is typically needed when submitting an article to a scientific
 journal.
 
-_This template is also available on
+The original template is also available on
 [Overleaf](https://www.overleaf.com/latex/templates/review-response-template/tmbvmjstxwrd)._
 
 # Usage
@@ -38,11 +38,22 @@ The typical usage is
 \editor
 Response to the editor
 
+\questions
+Resonses of reviewer to the first standard question from the editor
+
+\questions
+Resonses of reviewer to the seconnd standard question from the editor
+
 \reviewer
 Response to the first reviewer
 
+% We got no comments from Reviewer 2 so we need to skip the Reviewer 2
+\setcounter{reviewer@counter}{2}
+
 \reviewer
-Response to the second reviewer
+Response to the tird reviewer
+
+
 ```
 
 ### Comments and Responses

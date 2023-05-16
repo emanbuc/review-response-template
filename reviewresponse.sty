@@ -1,4 +1,4 @@
-\ProvidesPackage{reviewresponse}[2022/10/18 Review Response v1.2.1]
+\ProvidesPackage{reviewresponse}[2021/11/10 Review Response v1.2]
 % Author: Karl-Ludwig Besser
 % Email: k.besser@tu-bs.de
 
@@ -33,6 +33,8 @@
 %\definecolor{colorlight}{RGB}{102,180,211}
 %\colorlet{colorcommentbg}{colorlight!20}
 
+
+
 \colorlet{colorchangebg}{black!2}
 \colorlet{colorchangeframe}{black!20}
 %%%
@@ -42,9 +44,6 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{.3em plus .2em minus .3em}
 \renewcommand{\baselinestretch}{1.5}
-
-\widowpenalty10000
-\clubpenalty10000
 %%%
 
 %%% Counters
@@ -52,6 +51,9 @@
 \setcounter{reviewer@counter}{0}
 \newcounter{reviewcomment@counter}[reviewer@counter]
 \setcounter{reviewcomment@counter}{0}
+
+\newcounter{reviewquestion@counter}
+\setcounter{reviewquestion@counter}{0}
 %%%
 
 %%% Commands
@@ -83,6 +85,15 @@
 	\section*{Authors' Response to the Editor}
 }
 
+
+\newcommand{\questions}{
+	\clearpage
+	\@ifundefined{pdfbookmark}{}{%
+		\pdfbookmark[1]{Reviewer responses to questions}{hyperref@questions}%
+	}%
+	\section*{Reviewer's Responses to Questions}
+}
+
 \newcommand{\reviewer}{
 	\clearpage
 	\refstepcounter{reviewer@counter}%
@@ -102,7 +113,11 @@
 	\begin{tcolorbox}[adjusted title={Comment \arabic{reviewcomment@counter}}, fonttitle={\bfseries}, colback={colorcommentbg}, colframe={colorcommentframe},coltitle={colorcommentbg},#1]
 }{\end{tcolorbox}}
 
-\newenvironment{revresponse}[1][{Thank you for the comment.}]{%
+\newenvironment{revquestion}[1][]{\refstepcounter{reviewquestion@counter}
+	\begin{tcolorbox}[adjusted title={Question \arabic{reviewquestion@counter}}, fonttitle={\bfseries}, colback={colorcommentbg}, colframe={colorcommentframe},coltitle={colorcommentbg},#1]
+}{\end{tcolorbox}}
+
+\newenvironment{revresponse}[1][{ }]{%
 	\textbf{Response:} #1\par
 }{\vspace{4em plus 0em minus 1em}}
 
